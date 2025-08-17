@@ -1,0 +1,207 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FitFlow – 10‑Post Fitness</title>
+  <style>
+    :root{
+      --bg: #0b0f19; --bg2:#0f1524; --text:#f8fafc; --muted:#cbd5e1; --card:#0f172a; --accent:#10b981; --ring:#2dd4bf;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:linear-gradient(135deg,var(--bg),var(--bg2));color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 1rem 5rem}
+    header{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.45);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.8rem 1rem}
+    .brand{font-weight:900;font-size:1.5rem;letter-spacing:-.02em}
+    nav{display:flex;gap:.4rem}
+    .btn{border:0;border-radius:.9rem;padding:.55rem .8rem;background:rgba(255,255,255,.08);color:var(--text);cursor:pointer}
+    .btn:hover{background:rgba(255,255,255,.15)}.card{background:rgba(15,23,42,.8);border:1px solid rgba(255,255,255,.08);border-radius:1.2rem;box-shadow:var(--shadow);overflow:hidden}
+.hero{display:grid;grid-template-columns:1fr;gap:0}
+.hero img{width:100%;height:260px;object-fit:cover}
+.hero .p{padding:1.25rem}
+.h1{font-weight:900;font-size:clamp(1.6rem,3vw,2.5rem);line-height:1.1}
+.muted{color:var(--muted)}
+
+.grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.grid{grid-template-columns:repeat(3,1fr)} .hero{grid-template-columns:1.1fr .9fr} .hero img{height:100%}}
+
+.post-card img{width:100%;height:180px;object-fit:cover}
+.post-card .p{padding:1rem}
+.tag{display:inline-block;margin-right:.35rem;margin-top:.35rem;padding:.2rem .5rem;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);font-size:.72rem}
+
+article .title{font-weight:900;font-size:clamp(1.6rem,3vw,2.2rem)}
+article img.cover{width:100%;height:320px;object-fit:cover}
+article .content{line-height:1.65;color:#e5e7eb}
+article .content h3{margin:1.2rem 0 .2rem;font-size:1.2rem}
+article .content ul{padding-left:1rem}
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin:.5rem 0 1rem}
+.link{font-size:.9rem;padding:.5rem .8rem;border-radius:.8rem;background:rgba(255,255,255,.08)}
+
+footer{margin-top:3rem;color:var(--muted);display:flex;gap:.75rem;justify-content:space-between;flex-wrap:wrap}
+
+/* Router visibility */
+[data-route]{display:none}
+[data-route].active{display:block}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <div class="brand">FitFlow</div>
+        <span class="tag" style="background:rgba(16,185,129,.15);border-color:rgba(45,212,191,.35);color:#a7f3d0">10‑Post Blog</span>
+      </div>
+      <nav>
+        <a class="btn" href="#/">Home</a>
+        <a class="btn" href="#/about">About</a>
+        <a class="btn" href="#/contact">Contact</a>
+      </nav>
+    </div>
+  </header>  <main class="container">
+    <!-- HOME -->
+    <section id="route-home" data-route>
+      <section class="card hero" style="margin-top:1rem;margin-bottom:1rem">
+        <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1600&auto=format&fit=crop" alt="fitness" />
+        <div class="p">
+          <div class="h1">Stronger. Healthier. Consistent.</div>
+          <p class="muted">Evidence‑led training, simple nutrition, and practical recovery. Explore 10 concise guides crafted to help you build momentum today.</p>
+          <div style="margin-top:.8rem;display:flex;gap:.5rem;flex-wrap:wrap" id="quick-links"></div>
+        </div>
+      </section><div class="grid" id="posts-grid"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="route-about" data-route>
+  <div class="card" style="padding:1.25rem;margin-top:1rem">
+    <h2 class="h1">About FitFlow</h2>
+    <p class="muted">FitFlow is a minimrequire. All posts are embedded below and shown on demand.</p>
+    <ul>
+      <li>Single‑file HTML, CSS & JS</li>
+      <li>ABDULREHMAN</li>
+      <li>Responsive, keyboard‑accessible</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="route-contact" data-route>
+  <div class="card" style="padding:1.25rem;margin-top:1rem;max-width:560px">
+    <h2 class="h1">Contact</h2>
+    <p class="muted">Questions or feedback? Send a message (demo only).</p>
+    <form onsubmit="event.preventDefault();alert('Thanks! In this demo, messages are not sent.');" style="display:grid;gap:.6rem;margin-top:.6rem">
+      <input placeholder="Your name" class="input" style="padding:.75rem;border-radius:.8rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--text)"/>
+      <input placeholder="Email" class="input" style="padding:.75rem;border-radius:.8rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--text)"/>
+      <textarea placeholder="Message" rows="5" style="padding:.75rem;border-radius:.8rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--text)"></textarea>
+      <button class="btn" type="submit" style="background:var(--accent)">Send</button>
+    </form>
+  </div>
+</section>
+
+<!-- POST TEMPLATE (populated by JS) -->
+<section id="route-post" data-route>
+  <article class="card" style="margin-top:1rem">
+    <img id="post-hero" class="cover" alt="" />
+    <div style="padding:1rem 1.25rem 1.25rem">
+      <div class="toolbar">
+        <a href="#/" class="link">← Back to all posts</a>
+        <div id="meta" class="muted" style="font-size:.9rem"></div>
+      </div>
+      <h1 id="post-title" class="title"></h1>
+      <div id="post-body" class="content"></div>
+      <div id="post-tags" style="margin-top:1rem"></div>
+      <div class="toolbar" id="neighbors"></div>
+    </div>
+  </article>
+</section>
+
+<footer>
+  <p>© <span id="year"></span> FitFlow All Rights Reserved</p>
+  <div style="display:flex;gap:.6rem">
+    <a class="link" href="#/about">About</a>
+    <a class="link" href="#/contact">Contact</a>
+    <a class="link" href="#/">Home</a>
+  </div>
+</footer>
+
+  </main>  <script>
+    const posts = [
+      {slug:'beginner-workout-plan',title:'Beginner Workout Plan (Weeks 1–4)',excerpt:'A gentle, science-backed ramp into strength and cardio—perfect if you\'re just getting started.',hero:'https://images.unsplash.com/photo-1571907480495-5021fb3b0d09?q=80&w=1600&auto=format&fit=crop',readTime:6,date:'2025-08-17',tags:['beginner','program','strength','cardio'],body:`<h3>Overview</h3>You’ll train <strong>3 days/week</strong> full-body (A/B split) and walk on 2–3 other days.<h3>Weekly Split</h3><ul><li><strong>Mon — Workout A</strong>: Squat 3×8, Push-ups 3×AMRAP, DB Row 3×10, Plank 3×30s</li><li><strong>Wed — Workout B</strong>: Hip Hinge 3×8, Overhead Press 3×8, Lat Pulldown 3×10, Side Plank 3×20s/side</li><li><strong>Fri — Workout A</strong> (progress load or reps)</li></ul><h3>Cardio</h3><ul><li>20–30 min brisk walks 2–3×/week. Keep a pace where you can talk but not sing.</li></ul><h3>Progression</h3>Add <strong>2.5–5% load</strong> or <strong>1–2 reps</strong> weekly while maintaining good technique.<h3>Form Cues</h3><ul><li>Brace your core, keep ribs stacked over pelvis.</li><li>Use full range of motion.</li><li>Stop 1–2 reps shy of failure on main lifts.</li></ul>`},
+      {slug:'fat-loss-nutrition',title:'Fat Loss Nutrition Without Misery',excerpt:'Practical calorie targets, protein, and simple food swaps you’ll actually stick to.',hero:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1600&auto=format&fit=crop',readTime:7,date:'2025-08-17',tags:['nutrition','fat loss'],body:`<h3>Targets</h3><ul><li><strong>Calories</strong>: Bodyweight (kg) × 24 → maintenance; eat <strong>15–20% less</strong> for fat loss.</li><li><strong>Protein</strong>: 1.6–2.2 g/kg bodyweight daily.</li></ul><h3>Plate Method</h3><ul><li>1/2 veggies, 1/4 protein, 1/4 carbs, add 1–2 tsp fats.</li></ul><h3>Easy Swaps</h3><ul><li>Soda → zero‑cal soda or water with lemon.</li><li>Fried snacks → air‑fried or fruit + yogurt.</li></ul><h3>Adherence Tips</h3><ul><li>Pre‑log meals.</li><li>Keep 2–3 default breakfasts/lunches.</li><li>Plan 80/20: most meals on plan, some purely for joy.</li></ul>`},
+      {slug:'hypertrophy-essentials',title:'Hypertrophy Essentials: Build Muscle Efficiently',excerpt:'Volume, intensity, and exercise selection—what actually grows muscle.',hero:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1600&auto=format&fit=crop',readTime:8,date:'2025-08-17',tags:['muscle','programming'],body:`<h3>Key Levers</h3><ul><li><strong>Volume</strong>: 10–20 hard sets per muscle/week.</li><li><strong>Intensity</strong>: Work within <strong>RPE 6–9</strong> (1–4 reps in reserve).</li><li><strong>Frequency</strong>: 2–3×/week per muscle works well.</li></ul><h3>Movements</h3><ul><li>Push, pull, hinge, squat, carry, and single‑leg patterns.</li></ul><h3>Progression</h3><ul><li>Double‑progress: increase reps within a range, then add load.</li></ul>`},
+      {slug:'home-workout-no-equipment',title:'Home Workout: No Equipment, Big Results',excerpt:'Bodyweight circuits for strength and conditioning in 25–30 minutes.',hero:'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=1600&auto=format&fit=crop',readTime:5,date:'2025-08-17',tags:['home','bodyweight'],body:`<h3>3‑Round Circuit (rest 60–90s between rounds)</h3><ul><li>Squat 15</li><li>Push‑up 8–15 (incline as needed)</li><li>Reverse Lunge 10/leg</li><li>Superman 12</li><li>Mountain Climbers 30s</li></ul>`},
+      {slug:'mobility-routine-10min',title:'Daily Mobility: 10‑Min Reset',excerpt:'Grease your joints and feel better at your desk and in the gym.',hero:'https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?q=80&w=1600&auto=format&fit=crop',readTime:4,date:'2025-08-17',tags:['mobility','recovery'],body:`<h3>Flow</h3><ol><li>Cat–Cow 6</li><li>Thoracic Rotations 6/side</li><li>Hip 90/90 5/side</li><li>Ankle Rocks 8/side</li><li>Couch Stretch 45s/side</li></ol>`},
+      {slug:'sleep-recovery-guide',title:'Sleep & Recovery Guide',excerpt:'Boost results with smarter sleep, deloads, and stress management.',hero:'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop',readTime:6,date:'2025-08-17',tags:['sleep','recovery'],body:`<h3>Sleep Hygiene</h3><ul><li>Regular schedule, cool dark room, no screens 60 min pre‑bed.</li></ul><h3>Deloads</h3><ul><li>Every 6–8 weeks reduce sets by 30–50% and train at RPE 5–6.</li></ul><h3>Stress</h3><ul><li>5–10 min daily breathing or a short walk after meals.</li></ul>`},
+      {slug:'cardio-choices-explained',title:'Cardio Choices Explained (LISS, MISS, HIIT)',excerpt:'When to use each style and how to blend them with lifting.',hero:'https://images.unsplash.com/photo-1544912526-6f8e5d0f7e8b?q=80&w=1600&auto=format&fit=crop',readTime:7,date:'2025-08-17',tags:['cardio'],body:`<h3>Quick Definitions</h3><ul><li><strong>LISS</strong>: 30–60 min easy pace; great for recovery.</li><li><strong>MISS</strong>: 20–40 min moderate; pairs well with fat loss.</li><li><strong>HIIT</strong>: 10–20 min intervals; potent but taxing.</li></ul><h3>Sample Week</h3><ul><li>2× LISS, 1× MISS or HIIT depending on goals.</li></ul>`},
+      {slug:'female-strength-myths',title:'Female Strength: Myths & Smart Training',excerpt:'No, lifting won\'t make you bulky. Here\'s what works for women.',hero:'https://images.unsplash.com/photo-1599050751775-10c44c2d3c49?q=80&w=1600&auto=format&fit=crop',readTime:6,date:'2025-08-17',tags:['women','strength'],body:`<h3>Keys</h3><ul><li>Train 3–4×/week, focus on compounds + glutes.</li><li>Eat enough protein; don\'t fear creatine.</li><li>Track cycles and deload around tougher weeks if needed.</li></ul>`},
+      {slug:'supplements-that-work',title:'Supplements That Actually Work',excerpt:'Cut the noise: creatine, caffeine, protein, and vitamin D—evidence‑backed.',hero:'https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1600&auto=format&fit=crop',readTime:5,date:'2025-08-17',tags:['supplements'],body:`<h3>Worth Considering</h3><ul><li><strong>Creatine Monohydrate</strong>: 3–5 g/day.</li><li><strong>Caffeine</strong>: 2–6 mg/kg pre‑workout.</li><li><strong>Whey/Protein</strong>: to reach daily protein.</li><li><strong>Vitamin D</strong>: if deficient per bloodwork.</li></ul>`},
+      {slug:'gym-etiquette',title:'Gym Etiquette 101',excerpt:'Be the training partner everyone wants: share equipment, clean up, focus.',hero:'https://images.unsplash.com/photo-1542762933-ab3502717c41?q=80&w=1600&auto=format&fit=crop',readTime:3,date:'2025-08-17',tags:['etiquette'],body:`<h3>Do This</h3><ul><li>Re‑rack plates, wipe down benches, avoid hogging.</li><li>Keep rest timers; offer to work in.</li><li>Film sparingly and respect others\' privacy.</li></ul>`},
+      {slug:'12-week-blueprint',title:'12‑Week Balanced Fitness Blueprint',excerpt:'A cohesive plan blending strength, cardio, and recovery for busy people.',hero:'https://images.unsplash.com/photo-1518644961665-ed172691aaa1?q=80&w=1600&auto=format&fit=crop',readTime:9,date:'2025-08-17',tags:['program','blueprint'],body:`<h3>Phase 1 (Weeks 1–4)</h3><ul><li>Learn the lifts, build habits.</li></ul><h3>Phase 2 (Weeks 5–8)</h3><ul><li>Add volume and a weekly HIIT session.</li></ul><h3>Phase 3 (Weeks 9–12)</h3><ul><li>Push PRs, taper in week 12. Celebrate milestones.</li></ul>`}
+    ];
+
+    const $ = (sel) => document.querySelector(sel);
+    const grid = $('#posts-grid');
+    const quick = $('#quick-links');
+
+    function renderHome(){
+      grid.innerHTML = posts.map(p => `
+        <article class="card post-card">
+          <a href="#/post/${p.slug}">
+            <img src="${p.hero}" alt=""/>
+            <div class="p">
+              <h3 style="margin:0 0 .25rem;font-weight:800">${p.title}</h3>
+              <p class="muted" style="margin:.2rem 0 .4rem">${p.excerpt}</p>
+              <div class="muted" style="font-size:.8rem">${p.readTime} min read • ${p.tags.slice(0,2).join(' · ')}</div>
+            </div>
+          </a>
+        </article>
+      `).join('');
+
+      quick.innerHTML = posts.slice(0,3).map(p => `<a class="btn" style="background:var(--accent)" href="#/post/${p.slug}">Read: ${p.title}</a>`).join('');
+    }
+
+    function showRoute(id){
+      document.querySelectorAll('[data-route]').forEach(el=>el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function renderPost(slug){
+      const p = posts.find(x=>x.slug===slug);
+      if(!p){ location.hash = '#/'; return; }
+      $('#post-hero').src = p.hero;
+      $('#post-title').textContent = p.title;
+      $('#post-body').innerHTML = p.body;
+      $('#meta').textContent = new Date(p.date).toLocaleDateString() + ' • ' + p.readTime + ' min read';
+      $('#post-tags').innerHTML = p.tags.map(t=>`<span class="tag">#${t}</span>`).join('');
+
+      const idx = posts.findIndex(x=>x.slug===slug);
+      const prev = posts[idx-1], next = posts[idx+1];
+      const wrap = $('#neighbors');
+      wrap.innerHTML = '<span></span>';
+      const right = document.createElement('div'); right.style.display='flex'; right.style.gap='.5rem';
+      if(prev){ right.innerHTML += `<a class="link" href="#/post/${prev.slug}">← ${prev.title}</a>`; }
+      if(next){ right.innerHTML += `<a class="link" href="#/post/${next.slug}">${next.title} →</a>`; }
+      wrap.appendChild(right);
+    }
+
+    function router(){
+      const hash = location.hash.replace('#','') || '/';
+      if(hash === '/') { showRoute('route-home'); renderHome(); return; }
+      if(hash === '/about'){ showRoute('route-about'); return; }
+      if(hash === '/contact'){ showRoute('route-contact'); return; }
+      if(hash.startsWith('/post/')){ showRoute('route-post'); renderPost(hash.split('/post/')[1]); return; }
+      // default
+      location.hash = '#/'
+    }
+
+    window.addEventListener('hashchange', router);
+    router();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script></body>
+</html>
